@@ -1,17 +1,28 @@
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from.models import User
+from.models import User, Profile
 
 
-class CreateUserForm(UserCreationForm):
+class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'role', 'password', 'password2']
+        fields = ['first_name', 'email', 'username', 'password1', 'password2']
+
+    def __init__(self, *args, **kwargs):
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'input'})
 
 
-        def __init__(self, *args, **kwargs):
-            super(CreateUserForm).__init__(*args, **kwargs)  # self
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['name', 'email', 'username']
 
-            for name, field in self.fields.items():
-                field.widget.attrs.update({'class': 'input'})
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'input'})
 
