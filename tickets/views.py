@@ -44,4 +44,4 @@ def deleteTicket(request, pk):
         ticket.delete()
         return redirect('tickets-all')
     context = {'object': ticket}
-    return render(request, 'tickets/tickets-all.html', context)
+    return render(request, 'tickets/delete.html', context)

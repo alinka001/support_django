@@ -10,16 +10,20 @@
         <th>Описание</th>
         <th>Статус</th>
         <th>Время создания</th>
+        <th>Обновление</th>
+        <th>Удаление</th>
     </tr>
     </thead>
     <tbody>
     {% for ticket in tickets %}
         <tr>
-            <td><a href="/one/{{ ticket.id }}">{{ ticket.id }}</a></td>
+            <td><a href="/tickets/update/{{ ticket.id }}">{{ ticket.id }}</a></td>
             <td>{{ ticket.description }}</td>
             <td>{{ ticket.message }}</td>
             <td>{{ ticket.status }}</td>
             <td>{{ ticket.created_at }}</td>
+            <td><a href="/tickets/update/{{ ticket.id }}" class="default">Обновление</a></td>
+        <td><a href="/tickets/delete/{{ ticket.id }}" class="default">Удаление</a></td>
         </tr>
     {% endfor %}
     </tbody>

@@ -1,0 +1,24 @@
+{% extends 'tickets/base.html' %}
+
+{% block content %}
+
+
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+
+            <br>
+
+            <form class="form-delete" action="" method="POST">
+                {% csrf_token %}
+                <p>Вы действительно хотите удалить "{{ object }}"?</p>
+
+                <a class="btn2"  href="/tickets/all/">Назад</a>
+
+                <input class="btn1" type="submit" value="Удалить" />
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

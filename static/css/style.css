@@ -192,3 +192,46 @@ h2{
     margin: auto;
     padding: 0 15px;
 }
+
+.default{
+    color: rgba(114, 2, 251, 0.84);
+    text-decoration: none;
+    padding: 5px 5px;
+    border:1px solid;
+    display: inline-block;
+}
+.form-delete{
+     display: flex;
+     flex-direction: column;
+     margin:100px auto;
+
+}
+
+.form-delete p{
+    margin-bottom: 50px;
+    font-size: 32px;
+    color: #000000;
+}
+
+.btn2{
+    width: 200px;
+    text-align: center;
+    margin:0 auto 50px;
+    font-size: 28px;
+    text-decoration: none;
+    color: #422d42;
+
+}
+
+.btn1{
+    width: 200px;
+    text-align: center;
+    margin:0 auto;
+    font-size: 28px;
+    text-decoration: none;
+    color: #f8f8f8;
+    background-color: rgba(238, 18, 18, 0.87);
+    padding: 7px;
+    border-radius: 50px;
+
+}
