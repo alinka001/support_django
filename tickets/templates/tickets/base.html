@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Test API{% endblock %}</title>
+  <!-- Ссылки на CSS файлы, например: -->
+   <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+<body>
+<header>
+    <div class="header-logo">
+    <div class="logo">
+        <img src="https://emojio.ru/images/apple-b/1f338.png" alt="#">
+    </div>
+    <h1>Служба поддержки</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/tickets/all">Support Requests</a></li>
+            <li><a href="/support_requests">Вход</a></li>
+            <li><a href="/support_requests">Регистрация</a></li>
+            <!-- Далее - другие ссылки -->
+        </ul>
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+      <!-- По умолчанию: контент, который будет отображаться, если блок 'content' не определен в дочернем шаблоне -->
+    {% endblock %}
+</main>
+
+<footer>
+    <!-- Например, копирайт, ссылки на другие страницы -->
+    <p>Копирование разрешено</p>
+</footer>
+
+  <!-- Ссылки на JavaScript файлы, например: -->
+  <!-- <script src="path/to/script.js"></script> -->
+</body>
+</html>

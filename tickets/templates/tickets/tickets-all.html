@@ -1,0 +1,28 @@
+{% extends 'tickets/base.html' %}
+
+{% block content %}
+{% load static %}
+<table>
+  <thead>
+    <tr>
+      <th>Номер заявки</th>
+      <th>Заголовок</th>
+      <th>Описание</th>
+      <th>Статус</th>
+      <th>Время создания</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ticket in tickets %}
+    <tr>
+      <td>{{ ticket.id }}</td>
+      <td>{{ ticket.description }}</td>
+      <td>{{ ticket.message }}</td>
+      <td>{{ ticket.status }}</td>
+      <td>{{ ticket.created_at }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

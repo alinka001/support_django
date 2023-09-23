@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Support Requests</h1>
+  {% if support_requests %}
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Created at</th>
+          <th>Status</th>
+          <!-- Другие заголовки (если есть) -->
+        </tr>
+      </thead>
+      <tbody>
+        {% for request in support_requests %}
+          <tr>
+            <td>{{ request.id }}</td>
+            <td>{{ request.created_at }}</td>
+            <td>{{ request.status }}</td>
+            <!-- Другие поля (если есть) -->
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No support requests yet.</p>
+  {% endif %}
+{% endblock %}
