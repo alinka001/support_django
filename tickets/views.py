@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+
+from .forms import TicketForm
 from .models import Ticket
 
 
@@ -7,6 +9,39 @@ def tickets(request):
     context = {'tickets': tickets}
     return render(request, 'tickets/tickets-all.html', context)
 
-def project(request, pk):
+
+def ticket(request, pk):
     ticketObj = Ticket.objects.get(id=pk)
-    return render(request, 'tickets/ticket-single.html', {'ticket': ticketObj})
+    return render(request, 'tickets/single-ticket.html', {'ticket': ticketObj})
+
+
+def createTicket(request):
+    form = TicketForm()
+    if request.method == 'POST':
+        form = TicketForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('tickets-all')
+    context = {'form': form}
+    return render(request, 'tickets/new-ticket.html', context)
+
+
+def updateTicket(request, pk):
+    ticketObj = Ticket.objects.get(id=pk)
+    form = TicketForm(instance=ticketObj)
+    if request.method == 'POST':
+        form = TicketForm(request.POST, instance=ticketObj)
+        if form.is_valid():
+            form.save()
+            return redirect('tickets-all')
+    context = {'form': form}
+    return render(request, 'tickets/update.html', context)
+
+
+def deleteTicket(request, pk):
+    ticket = get_object_or_404(Ticket, id=pk)
+    if request.method == 'POST':
+        ticket.delete()
+        return redirect('tickets-all')
+    context = {'object': ticket}
+    return render(request, 'tickets/tickets-all.html', context)

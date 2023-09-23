@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'tickets/base.html' %}
 
-</body>
-</html>
+{% block content %}
+{% load static %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Номер заявки</th>
+        <th>Заголовок</th>
+        <th>Описание</th>
+        <th>Статус</th>
+        <th>Время создания</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.description }}</td>
+        <td>{{ ticket.message }}</td>
+        <td>{{ ticket.status }}</td>
+        <td>{{ ticket.created_at }}</td>
+    </tr>
+    </tbody>
+</table>
+
+<button class="custom-btn btn-1">Обновить </button>
+
+
+
+{% endblock %}

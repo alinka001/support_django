@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Test API{% endblock %}</title>
-  <!-- Ссылки на CSS файлы, например: -->
    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 <body>
@@ -18,26 +17,22 @@
     </div>
     <nav>
         <ul>
-            <li><a href="/tickets/all">Support Requests</a></li>
+            <li><a href="/tickets/create/">Создать заявку</a></li>
+            <li><a href="/tickets/all">Мои заявки</a></li>
             <li><a href="/support_requests">Вход</a></li>
             <li><a href="/support_requests">Регистрация</a></li>
-            <!-- Далее - другие ссылки -->
+
         </ul>
     </nav>
 </header>
-
 <main>
+    <div class="container">
     {% block content %}
-      <!-- По умолчанию: контент, который будет отображаться, если блок 'content' не определен в дочернем шаблоне -->
     {% endblock %}
+</div>
 </main>
-
 <footer>
-    <!-- Например, копирайт, ссылки на другие страницы -->
     <p>Копирование разрешено</p>
 </footer>
-
-  <!-- Ссылки на JavaScript файлы, например: -->
-  <!-- <script src="path/to/script.js"></script> -->
 </body>
 </html>

@@ -3,26 +3,26 @@
 {% block content %}
 {% load static %}
 <table>
-  <thead>
+    <thead>
     <tr>
-      <th>Номер заявки</th>
-      <th>Заголовок</th>
-      <th>Описание</th>
-      <th>Статус</th>
-      <th>Время создания</th>
+        <th>Номер заявки</th>
+        <th>Заголовок</th>
+        <th>Описание</th>
+        <th>Статус</th>
+        <th>Время создания</th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     {% for ticket in tickets %}
-    <tr>
-      <td>{{ ticket.id }}</td>
-      <td>{{ ticket.description }}</td>
-      <td>{{ ticket.message }}</td>
-      <td>{{ ticket.status }}</td>
-      <td>{{ ticket.created_at }}</td>
-    </tr>
+        <tr>
+            <td><a href="/one/{{ ticket.id }}">{{ ticket.id }}</a></td>
+            <td>{{ ticket.description }}</td>
+            <td>{{ ticket.message }}</td>
+            <td>{{ ticket.status }}</td>
+            <td>{{ ticket.created_at }}</td>
+        </tr>
     {% endfor %}
-  </tbody>
+    </tbody>
 </table>
 
 {% endblock %}

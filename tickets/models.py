@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 
 class Ticket(models.Model):
@@ -7,7 +8,7 @@ class Ticket(models.Model):
         ('in_progress', 'In progress'),
         ('done', 'Done')
     )
-
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
     message = models.CharField(max_length=200)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
