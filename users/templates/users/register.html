@@ -1,28 +1,42 @@
-<!-- registration.html -->
+{% extends 'tickets/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration Form</title>
-</head>
-<body>
-    <h1>Registration Form</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" name="username" required><br>
+{% block content %}
+{% load static %}
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br>
+    <div class="auth">
+    <div class="card">
+        <div class="auth__header">
+            <h3>Зарегистрироваться</h3>
+        </div>
 
-        <label for="password_confirmation">Confirm Password:</label>
-        <input type="password" name="password_confirmation" required><br>
+        <form method="POST" class="form auth__form">
+            {% csrf_token %}
 
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html>
+            {% for field in form %}
+            <div class="form__field">
+                <label for="formInput#text">{{ field.label }}</label>
+                {{ field }}
+
+                {% for error in field.errors %}
+                <p style="color: red;">{{ error }}</p>
+                {% endfor %}
+
+            </div>
+
+            {% endfor %}
+
+            <div class="auth__actions">
+                <input class="btn btn--sub btn--lg" type="submit" value="Сохранить" />
+            </div>
+        </form>
+        <div class="auth__alternative">
+            <p>Уже есть аккаунт?</p>
+            <a href="{% url 'login' %}">Войти</a>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

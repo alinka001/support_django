@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Test API{% endblock %}</title>
+    <title>{% block title %}поддержечка{% endblock %}</title>
    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 <body>
@@ -18,9 +18,14 @@
     <nav>
         <ul>
             <li><a href="/tickets/create/">Создать заявку</a></li>
-            <li><a href="/tickets/all">Мои заявки</a></li>
-            <li><a href="/support_requests">Вход</a></li>
-            <li><a href="/support_requests">Регистрация</a></li>
+            <li><a href="/tickets/all/">Мои заявки</a></li>
+             {% if user.is_authenticated == False %}
+            <li><a href="/users/login/">Вход</a></li>
+            <li><a href="/users/register/">Регистрация</a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <li><a href="/users/logout/">Выйти</a></li>
+            {% endif %}
 
         </ul>
     </nav>

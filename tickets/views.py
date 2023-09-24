@@ -7,7 +7,10 @@ from .models import Ticket
 
 @login_required(login_url='login')
 def tickets(request):
-    tickets = Ticket.objects.all()
+    if not request.user.is_superuser:
+        tickets = Ticket.objects.filter(author=request.user.username)
+    else:
+        tickets = Ticket.objects.all()
     context = {'tickets': tickets}
     return render(request, 'tickets/tickets-all.html', context)
 
@@ -24,6 +27,8 @@ def createTicket(request):
     if request.method == 'POST':
         form = TicketForm(request.POST)
         if form.is_valid():
+            ticket = form.save(commit=False)
+            ticket.author = request.user.username
             form.save()
             return redirect('tickets-all')
     context = {'form': form}
@@ -32,8 +37,9 @@ def createTicket(request):
 
 @login_required(login_url='login')
 def updateTicket(request, pk):
-    ticketObj = Ticket.objects.get(id=pk)
+    ticketObj = get_object_or_404(Ticket, id=pk)
     form = TicketForm(instance=ticketObj)
+
     if request.method == 'POST':
         form = TicketForm(request.POST, instance=ticketObj)
         if form.is_valid():
@@ -51,3 +57,5 @@ def deleteTicket(request, pk):
         return redirect('tickets-all')
     context = {'object': ticket}
     return render(request, 'tickets/delete.html', context)
+
+

@@ -1,0 +1,18 @@
+{% extends "tickets/base.html" %}
+
+{% block content %}
+
+<h2>Добавление ответа на тикеты</h2>
+
+<form class="form" method="post">
+  {% csrf_token %}
+  <div>
+    <label for="answer">Добавить ответ на тикет</label>
+    <textarea name="answer" id="answer" rows="5" cols="45"></textarea>
+  </div>
+  <div>
+    <button class="custom-btn btn-1" type="submit">Отправить</button>
+  </div>
+</form>
+
+{% endblock %}

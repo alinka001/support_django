@@ -5,10 +5,9 @@ from users.models import User
 class Ticket(models.Model):
     STATUS_CHOICES = (
         ('new', 'New'),
-        ('in_progress', 'In progress'),
         ('done', 'Done')
     )
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, max_length=50,on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
     message = models.CharField(max_length=200)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
@@ -20,7 +19,7 @@ class Ticket(models.Model):
 
 class Answer(models.Model):
 
-    ticket_id = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+    ticket_id = models.OneToOneField(Ticket, on_delete=models.CASCADE, unique=True)
     answer = models.TextField(max_length=500)
 
     def __str__(self):
