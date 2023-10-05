@@ -1,14 +1,14 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import TicketForm
-from .models import Ticket
+from .forms import TicketForm, AnswerForm
+from .models import Ticket, User, Answer
 
 
 @login_required(login_url='login')
 def tickets(request):
     if not request.user.is_superuser:
-        tickets = Ticket.objects.filter(author=request.user.username)
+        tickets = Ticket.objects.all()
     else:
         tickets = Ticket.objects.all()
     context = {'tickets': tickets}
@@ -25,23 +25,25 @@ def ticket(request, pk):
 def createTicket(request):
     form = TicketForm()
     if request.method == 'POST':
+        print("request  ", request.POST)
         form = TicketForm(request.POST)
         if form.is_valid():
-            ticket = form.save(commit=False)
-            ticket.author = request.user.username
+            print(form)
             form.save()
             return redirect('tickets-all')
+
     context = {'form': form}
+    print("Context  ", context)
     return render(request, 'tickets/new-ticket.html', context)
 
 
 @login_required(login_url='login')
 def updateTicket(request, pk):
-    ticketObj = get_object_or_404(Ticket, id=pk)
-    form = TicketForm(instance=ticketObj)
+    ticketobj = Ticket.objects.get(id=pk)
+    form = TicketForm(instance=ticketobj)
 
     if request.method == 'POST':
-        form = TicketForm(request.POST, instance=ticketObj)
+        form = TicketForm(request.POST, instance=ticketobj)
         if form.is_valid():
             form.save()
             return redirect('tickets-all')
@@ -59,3 +61,31 @@ def deleteTicket(request, pk):
     return render(request, 'tickets/delete.html', context)
 
 
+
+@login_required(login_url='login')
+def createAnswer(request):
+    form = AnswerForm()
+    if request.method == 'POST':
+        print("request  ", request.POST)
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            print(form)
+            form.save()
+            return redirect('tickets-all')
+
+    context = {'form': form}
+    print("Context  ", context)
+    return render(request, 'tickets/answer.html', context)
+
+# @login_required(login_url='login')
+# def updateTicket(request, pk):
+#     ticketobj = get_object_or_404(Ticket, id=pk)
+#     form = TicketForm(instance=ticketobj)
+#
+#     if request.method == 'POST':
+#         form = TicketForm(request.POST, instance=ticketobj)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('tickets-all')
+#     context = {'form': form}
+#     return render(request, 'tickets/update.html', context)

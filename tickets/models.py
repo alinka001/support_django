@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from users.models import User
 
@@ -12,7 +14,7 @@ class Ticket(models.Model):
     message = models.CharField(max_length=200)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
     created_at = models.DateTimeField(auto_now_add=True)
-
+    id = models.AutoField(unique=True, primary_key=True, editable=False)
     def __str__(self):
         return self.description
 

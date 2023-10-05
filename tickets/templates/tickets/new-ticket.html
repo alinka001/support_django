@@ -4,19 +4,10 @@
 
 <h2>Создание заявки</h2>
 
-<form class="form" method="post">
+<form action="{% url 'new-ticket' %}" method="POST">
   {% csrf_token %}
-  <div>
-    <label for="description">Тема:</label>
-    <input type="text" name="description" id="description">
-  </div>
-  <div>
-    <label for="message">Описание:</label>
-    <textarea name="message" id="message" rows="5" cols="45"></textarea>
-  </div>
-  <div>
-    <button class="custom-btn btn-1" type="submit">Отправить заявку</button>
-  </div>
+    {{ form }}
+    <button type="submit">Добавить</button>
 </form>
 
 {% endblock %}
