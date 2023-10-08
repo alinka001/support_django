@@ -28,8 +28,10 @@ def createTicket(request):
         print("request  ", request.POST)
         form = TicketForm(request.POST)
         if form.is_valid():
-            print(form)
-            form.save()
+            print('form   ', form)
+            ticket = form.save(commit=False)
+            ticket.author = request.user
+            ticket.save()
             return redirect('tickets-all')
 
     context = {'form': form}
@@ -40,10 +42,12 @@ def createTicket(request):
 @login_required(login_url='login')
 def updateTicket(request, pk):
     ticketobj = Ticket.objects.get(id=pk)
+    print("ticket", ticketobj)
     form = TicketForm(instance=ticketobj)
-
+    print("req", request)
     if request.method == 'POST':
         form = TicketForm(request.POST, instance=ticketobj)
+        print(form)
         if form.is_valid():
             form.save()
             return redirect('tickets-all')
@@ -70,7 +74,11 @@ def createAnswer(request):
         form = AnswerForm(request.POST)
         if form.is_valid():
             print(form)
+
+            ticket = get_object_or_404(Ticket, id=request.POST.get('ticket_id'))
+            ticket.status = "Done"
             form.save()
+            ticket.save()
             return redirect('tickets-all')
 
     context = {'form': form}

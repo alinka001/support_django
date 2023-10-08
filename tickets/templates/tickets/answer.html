@@ -4,10 +4,10 @@
 
 <h2>Создание ответа</h2>
 
-<form action="{% url 'answer' %}" method="POST">
+<form class="form" action="{% url 'answer' %}" method="POST">
   {% csrf_token %}
     {{ form }}
-    <button type="submit">Добавить</button>
+    <button class="custom-btn btn-1" type="submit">Добавить</button>
 </form>
 
 {% endblock %}

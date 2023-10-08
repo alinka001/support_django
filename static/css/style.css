@@ -179,13 +179,13 @@ h2{
     box-shadow: 0 8px 8px rgba(69, 12, 110, 0.67);
     color: #a100ff;
 }
-*{
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-decoration: none;
-    box-sizing: border-box;
-}
+/**{*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    list-style: none;*/
+/*    text-decoration: none;*/
+/*    box-sizing: border-box;*/
+/*}*/
 
 
 .container{
@@ -257,3 +257,4 @@ h2{
 .form__field label{
     margin: auto;
 }
+

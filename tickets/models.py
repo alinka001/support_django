@@ -9,7 +9,7 @@ class Ticket(models.Model):
         ('new', 'New'),
         ('done', 'Done')
     )
-    author = models.ForeignKey(User, max_length=50,on_delete=models.CASCADE)
+    author = models.ForeignKey(User, max_length=50, on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
     message = models.CharField(max_length=200)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
