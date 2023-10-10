@@ -10,6 +10,8 @@
         <th>Описание</th>
         <th>Статус</th>
         <th>Время создания</th>
+        <th>Ответ поддержки</th>
+        <th>Обратная связь</th>
     </tr>
     </thead>
     <tbody>
@@ -19,11 +21,12 @@
         <td>{{ ticket.message }}</td>
         <td>{{ ticket.status }}</td>
         <td>{{ ticket.created_at }}</td>
+        <td>{{ ticket.answer }}</td>
+        <td>{{ feedback.feedback }}</td>
     </tr>
+
     </tbody>
 </table>
-
-<button class="custom-btn btn-1">Обновить </button>
 
 
 

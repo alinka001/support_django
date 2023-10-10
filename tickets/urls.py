@@ -11,4 +11,5 @@ urlpatterns = [
     path('delete/<str:pk>', views.deleteTicket, name="delete-ticket"),
     path('update/<int:pk>/', views.updateTicket, name='update'),
     path('answer/', views.createAnswer, name='answer'),
+    path('feedback/', views.create_feedback, name='feedback'),
 ]

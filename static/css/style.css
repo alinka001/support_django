@@ -35,7 +35,7 @@ body {
 }
 
 header {
-  background-color: rgba(220, 15, 200, 0.32);
+  background-color: rgba(52, 12, 203, 0.47);
   color: white;
   text-align: center;
   padding: 1em;
@@ -46,7 +46,7 @@ header h1 {
 }
 
 nav {
-  background-color: rgba(220, 15, 200, 0.35);
+  background-color: rgba(114, 2, 251, 0.51);
   text-align: center;
   padding: 1em;
 }
@@ -84,7 +84,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-  background-color: rgba(220, 15, 200, 0.38);
+  background-color: rgba(73, 15, 220, 0.46);
   color: rgb(255, 255, 255);
   text-align: center;
   padding: 15px 0;
@@ -98,7 +98,7 @@ footer {
 table {
  width: 100%;
  margin-bottom: 20px;
- border: 1px solid rgba(220, 15, 200, 0.35);
+ border: 1px solid rgba(114, 2, 251, 0.53);
  border-collapse: collapse;
   height:100%;
     margin-left: auto;
@@ -110,7 +110,7 @@ table th {
  padding: 5px;
   width: 100px;
   height: 50px;
- background: rgba(220, 15, 200, 0.35);
+ background: rgba(114, 2, 251, 0.84);
  border: 1px solid #dddddd;
 
 }
@@ -139,21 +139,23 @@ main .custom-btn {
     margin-top: 20px;
 }
 main .btn-1 {
-  background: rgba(220, 15, 200, 0.28);
-  background: linear-gradient(0deg, rgba(221, 0, 255, 0.79) 0%, rgba(114, 2, 251, 0.84) 100%);
+  background: rgba(220, 15, 200, 0.56);
+  background: linear-gradient(0deg, rgba(221, 0, 255, 0.49) 0%, rgba(114, 2, 251, 0.9) 100%);
   border: none;
 }
 main .btn-1:hover {
-   background: rgba(220, 15, 200, 0.28);
-background: linear-gradient(0deg, rgba(221, 0, 255, 0.79) 0%, rgba(114, 2, 251, 0.84) 100%);
+   background: rgba(114, 2, 251, 0.84);
+background: linear-gradient(0deg, rgba(221, 0, 255, 0.63) 0%, rgba(114, 2, 251, 0.56) 100%);
 }
 
 .form{
     color: #9a7a9a;
     display: flex;
+    margin: auto ;
+    width: 400px;
     flex-direction: column ;
     font-size: 24px;
-    margin-right: 50px;
+
     text-align: center;
 
 }
@@ -163,7 +165,7 @@ h2{
 }
 
 .form input{
-    border-color: rgba(131, 8, 218, 0.36);
+    border-color: rgb(154, 122, 154);
     height: 28px;
     margin-bottom: 20px;
     font-size: 20px;
@@ -179,14 +181,6 @@ h2{
     box-shadow: 0 8px 8px rgba(69, 12, 110, 0.67);
     color: #a100ff;
 }
-/**{*/
-/*    padding: 0;*/
-/*    margin: 0;*/
-/*    list-style: none;*/
-/*    text-decoration: none;*/
-/*    box-sizing: border-box;*/
-/*}*/
-
 
 .container{
     margin: auto;
@@ -194,7 +188,7 @@ h2{
 }
 
 .default{
-    color: rgba(114, 2, 251, 0.84);
+    color: rgba(114, 2, 251, 0.4);
     text-decoration: none;
     padding: 5px 5px;
     border:1px solid;
@@ -256,5 +250,15 @@ h2{
 
 .form__field label{
     margin: auto;
+}
+
+.special{
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.form__field_1 label{
+    height: 38px;
+    width: 400px;
 }
 

@@ -12,8 +12,10 @@
         <th>Статус</th>
         <th>Время создания</th>
         <th>Удаление</th>
+        {% if user.is_employee == False %}
         <th>Редактирование</th>
-
+        {% endif %}
+        <th>Ответ поддержки</th>
 
     </thead>
     <tbody>
@@ -21,36 +23,16 @@
 
     {% for ticket in tickets %}
         <tr>
-            <td><a href="/tickets/answer/{{ ticket.id }}">{{ ticket.id }}</a></td>
+            <td><a href="/tickets/one/{{ ticket.id }}">{{ ticket.id }}</a></td>
             <td>{{ ticket.author }}</td>
             <td>{{ ticket.description }}</td>
             <td>{{ ticket.message }}</td>
             <td>{{ ticket.status }}</td>
             <td>{{ ticket.created_at }}</td>
-            <td><a href="/tickets/delete/{{ ticket.id }}" class="default">Удаление</a></td>
-            <td><a href="/tickets/update/{{ ticket.id }}" class="default">Редактирование</a></td>
-
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-    <table>
-    <thead>
-    <tr>
-
-        <th>Заявка</th>
-        <th>Ответ</th>
-
-    </thead>
-    <tbody>
-
-
-
-    {% for ticket in tickets %}
-        <tr>
-            <td>{{ ticket.id }}</td>
-
+            <td><a href="/tickets/delete/{{ ticket.id }}" class="default">Удалить</a></td>
+            {% if user.is_employee == False %}
+            <td><a href="/tickets/update/{{ ticket.id }}" class="default">Редактировать</a></td>
+            {% endif %}
             <td>{{ ticket.answer }}</td>
 
         </tr>

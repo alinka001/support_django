@@ -26,3 +26,12 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.answer
+
+
+class Feedback(models.Model):
+
+    answer_id = models.OneToOneField(Answer, on_delete=models.CASCADE, unique=True)
+    feedback = models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.feedback

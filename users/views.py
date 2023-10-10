@@ -11,14 +11,19 @@ from .forms import *
 
 def loginUser(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        print('request.POST', request.POST)
+        username = request.POST.get('username')
+        print(username)
+        password = request.POST.get('password')
+        print(password)
         user = authenticate(request, username=username, password=password)
+        print(request)
+        print(user)
         if user is not None:
             login(request, user)
             return redirect('tickets-all')
         else:
-            return render(request, 'users/login.html', )
+            return render(request, 'users/login.html')
     else:
         return render(request, 'users/login.html')
 
