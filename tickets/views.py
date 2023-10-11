@@ -7,7 +7,6 @@ from .models import Ticket, User, Answer, Feedback
 
 @login_required(login_url='login')
 def tickets(request):
-
     userobj = User.objects.get(username=request.user)
     print(request.user)
     if not userobj.is_employee:
@@ -21,8 +20,8 @@ def tickets(request):
 @login_required(login_url='login')
 def ticket(request, pk):
     ticketObj = Ticket.objects.get(id=pk)
-    feedbackobj = Feedback.objects.get(id=pk)
-    return render(request, 'tickets/single-ticket.html', {'ticket': ticketObj, 'feedback': feedbackobj})
+    print(ticketObj.id)
+    return render(request, 'tickets/single-ticket.html', {'ticket': ticketObj})
 
 
 @login_required(login_url='login')
@@ -93,8 +92,7 @@ def createAnswer(request):
     return render(request, 'tickets/answer.html', context)
 
 
-
-#@permission_required(['ticket.add_feedback'])
+# @permission_required(['ticket.add_feedback'])
 @login_required(login_url='login')
 def create_feedback(request):
 
